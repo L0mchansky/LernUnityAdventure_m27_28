@@ -3,83 +3,76 @@ using System.Collections.Generic;
 
 namespace m28_28_task_1
 {
-    public class Wallet: IChangeBalance
+    public class Wallet: IWalletService
     {
-        public event Action<string, int> ChangeBalance;
+        public event Action<Currency, int> ChangeBalance;
 
-        private Dictionary<string, int> _currencyDictionaries;
-        private int _defaultValue = 0;
+        private List<Currency> _currencies = new();
 
-        public Wallet(Dictionary<string, int> currencyDictionaries = null)
-        {
-            if (currencyDictionaries != null) {
-                _currencyDictionaries = currencyDictionaries;
-            }
-        }
-
-        public void AddBalance(string currencyName, int value)
+        public void Add(CurrencyType type, int value)
         {
             if (value == 0 || value < 0) return;
-            if (CheckCurrency(currencyName) == false) return;
+            if (CheckCurrency(type) == false) return;
 
-            int currentValue = GetBalance(currencyName);
-            SetBalance(currencyName, currentValue + value);
+            int currentValue = Get(type);
+            Set(type, currentValue + value);
         }
 
-        public void SubtractBalance(string currencyName, int value)
+        public void Subtract(CurrencyType type, int value)
         {
             if (value == 0) return;
-            if (CheckCurrency(currencyName) == false) return;
+            if (CheckCurrency(type) == false) return;
 
             value = Math.Abs(value);
-            int currentValue = GetBalance(currencyName);
-            SetBalance(currencyName, currentValue - value);
+            int currentValue = Get(type);
+            Set(type, currentValue - value);
         }
 
-        public int GetBalance(string currencyName)
+        public int Get(CurrencyType type)
         {
-            if (CheckCurrency(currencyName))
+            if (CheckCurrency(type))
             {
-                return _currencyDictionaries[currencyName];
+                foreach (var currency in _currencies)
+                {
+                    if (currency.Type == type)
+                        return currency.Value;
+                }
             }
 
             return 0;
         }
 
-        public void CreateCurrency(string currencyName)
+        public void AddCurrency(Currency currency)
         {
-            if (CheckCurrency(currencyName) == false)
-            {
-                _currencyDictionaries[currencyName] = _defaultValue;
-            }
+            if (CheckCurrency(currency.Type) == true) return;
+
+            _currencies.Add(currency);
         }
 
-        public Dictionary<string, int> GetCurrencyDictionaries()
+        private bool CheckCurrency(CurrencyType type)
         {
-            if (_currencyDictionaries.Count != 0)
+            if (_currencies.Count == 0) return false;
+
+            foreach (var currency in _currencies)
             {
-                return _currencyDictionaries;
+                if (currency.Type == type)
+                    return true;
             }
 
-            return null;
+            return false;
         }
 
-        private bool CheckCurrency(string currencyName)
+        private void Set(CurrencyType type, int value)
         {
-            if (_currencyDictionaries.ContainsKey(currencyName))
+            foreach (var currency in _currencies)
             {
-                return true;
+                if (currency.Type == type)
+                {
+                    currency.SetValue(value);
+                    ChangeBalance?.Invoke(currency, value);
+                    return;
+                } 
             }
-            else
-            {
-                return false;
-            }
-        }
-
-        private void SetBalance(string currencyName, int value)
-        {
-           _currencyDictionaries[currencyName] = value;
-           ChangeBalance?.Invoke(currencyName, value);
         }
     }
 }
