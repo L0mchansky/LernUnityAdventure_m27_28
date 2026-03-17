@@ -11,15 +11,14 @@ public class WalletUIView : MonoBehaviour
     
     public void Initialize(IWalletService wallet, Currency currency)
     {
-        _wallet = wallet;
         _currency = currency;
 
-        _wallet.ChangeBalance += OnChangeBalance;
+        _currency.ChangeBalance += OnChangeBalance;
     }
 
     private void OnDestroy()
     {
-        _wallet.ChangeBalance -= OnChangeBalance;
+        _currency.ChangeBalance -= OnChangeBalance;
     }
 
     private void OnChangeBalance(Currency currency, int value)

@@ -5,8 +5,6 @@ namespace m28_28_task_1
 {
     public class Wallet: IWalletService
     {
-        public event Action<Currency, int> ChangeBalance;
-
         private List<Currency> _currencies = new();
 
         public void Add(CurrencyType type, int value)
@@ -69,7 +67,6 @@ namespace m28_28_task_1
                 if (currency.Type == type)
                 {
                     currency.SetValue(value);
-                    ChangeBalance?.Invoke(currency, value);
                     return;
                 } 
             }

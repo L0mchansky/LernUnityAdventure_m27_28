@@ -1,7 +1,11 @@
-﻿namespace m28_28_task_1
+﻿using System;
+
+namespace m28_28_task_1
 {
     public class Currency
     {
+        public event Action<Currency, int> ChangeBalance;
+
         private string _name;
         private CurrencyType _type;
         private int _value;
@@ -21,6 +25,7 @@
         public void SetValue(int value)
         {
             _value = value;
+            ChangeBalance?.Invoke(this, value);
         }
     }
 }
