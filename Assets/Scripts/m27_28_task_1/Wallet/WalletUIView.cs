@@ -1,32 +1,31 @@
-using m28_28_task_1;
 using TMPro;
 using UnityEngine;
 
-public class WalletUIView : MonoBehaviour
-{
-    [SerializeField] TMP_Text currencyUiValue;
-
-    private Currency _currency;
-    private IWalletService _wallet;
-    
-    public void Initialize(IWalletService wallet, Currency currency)
+namespace m27_28_task_1 {
+    public class WalletUIView : MonoBehaviour
     {
-        _currency = currency;
+        [SerializeField] TMP_Text currencyUiValue;
 
-        _currency.ChangeBalance += OnChangeBalance;
-    }
+        private Currency _currency;
 
-    private void OnDestroy()
-    {
-        _currency.ChangeBalance -= OnChangeBalance;
-    }
-
-    private void OnChangeBalance(Currency currency, int value)
-    {
-        Debug.Log("[OnChangeBalance]: ");
-        if (_currency == currency)
+        public void Initialize(Currency currency)
         {
-            currencyUiValue.text = value.ToString();
+            _currency = currency;
+
+            _currency.ChangeBalance += OnChangeBalance;
+        }
+
+        private void OnDestroy()
+        {
+            _currency.ChangeBalance -= OnChangeBalance;
+        }
+
+        private void OnChangeBalance(Currency currency, int value)
+        {
+            if (_currency == currency)
+            {
+                currencyUiValue.text = value.ToString();
+            }
         }
     }
 }

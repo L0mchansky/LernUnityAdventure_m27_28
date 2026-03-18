@@ -329,8 +329,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8474691288607289749}
-        m_TargetAssemblyTypeName: m28_28_task_1.WalletUIController, Assembly-CSharp
+      - m_Target: {fileID: 8912497346939080355}
+        m_TargetAssemblyTypeName: m27_28_task_1.WalletUIController, Assembly-CSharp
         m_MethodName: SubtractCoins
         m_Mode: 3
         m_Arguments:
@@ -461,8 +461,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8474691288607289749}
-        m_TargetAssemblyTypeName: m28_28_task_1.WalletUIController, Assembly-CSharp
+      - m_Target: {fileID: 8912497346939080355}
+        m_TargetAssemblyTypeName: m27_28_task_1.WalletUIController, Assembly-CSharp
         m_MethodName: AddCoins
         m_Mode: 3
         m_Arguments:
@@ -640,11 +640,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9067626770774202513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53892127dd5402c4e97fbb8dd7b49468, type: 3}
+  m_Script: {fileID: 11500000, guid: 99e8cb8b7e587a846b5ea84ad2d88361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 8474691288607289749}
-  _view: {fileID: 8867780894503242480}
 --- !u!114 &8867780894503242480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,10 +652,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9067626770774202513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93cc2ab050f2ff4aaa11fb64deccd4a, type: 3}
+  m_Script: {fileID: 11500000, guid: b97dcd122b3bf3c4a9a799d9ce3ed62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencyUiValue: {fileID: 6250491938049949597}
+  _controller: {fileID: 8912497346939080355}
+  _view: {fileID: 8474691288607289749}
 --- !u!114 &8474691288607289749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +666,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9067626770774202513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce7ca78e3978bc43bf5887cb0af0ec9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ccdcc53f7347e14aafd36587748e24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currencyUiValue: {fileID: 6250491938049949597}

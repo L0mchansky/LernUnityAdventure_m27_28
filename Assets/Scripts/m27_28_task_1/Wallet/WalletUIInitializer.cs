@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace m28_28_task_1
+namespace m27_28_task_1
 {
     public class WalletUIInitializer : MonoBehaviour
     {
@@ -14,7 +14,7 @@ namespace m28_28_task_1
             _wallet = wallet;
 
             _controller.Initialize(_wallet);
-            _view.Initialize(_wallet, currency);
+            _view.Initialize(currency);
         }
     }
 }

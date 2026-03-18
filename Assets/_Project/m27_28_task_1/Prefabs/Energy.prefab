@@ -91,11 +91,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3298222999513693837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53892127dd5402c4e97fbb8dd7b49468, type: 3}
+  m_Script: {fileID: 11500000, guid: 99e8cb8b7e587a846b5ea84ad2d88361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 7206155407431056772}
-  _view: {fileID: 941832395060304653}
 --- !u!114 &7206155407431056772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,9 +103,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3298222999513693837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce7ca78e3978bc43bf5887cb0af0ec9, type: 3}
+  m_Script: {fileID: 11500000, guid: b97dcd122b3bf3c4a9a799d9ce3ed62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controller: {fileID: 7495586669726637472}
+  _view: {fileID: 941832395060304653}
 --- !u!114 &941832395060304653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3298222999513693837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93cc2ab050f2ff4aaa11fb64deccd4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ccdcc53f7347e14aafd36587748e24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currencyUiValue: {fileID: 6046245246545107577}
@@ -316,14 +316,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7206155407431056772}
-        m_TargetAssemblyTypeName: m28_28_task_1.WalletUIController, Assembly-CSharp
+      - m_Target: {fileID: 7495586669726637472}
+        m_TargetAssemblyTypeName: m27_28_task_1.WalletUIController, Assembly-CSharp
         m_MethodName: AddEnergy
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -658,14 +658,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7206155407431056772}
-        m_TargetAssemblyTypeName: m28_28_task_1.WalletUIController, Assembly-CSharp
+      - m_Target: {fileID: 7495586669726637472}
+        m_TargetAssemblyTypeName: m27_28_task_1.WalletUIController, Assembly-CSharp
         m_MethodName: SubtractEnergy
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

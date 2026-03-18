@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace m28_28_task_1
+namespace m27_28_task_1
 {
     public interface IWalletService
     {

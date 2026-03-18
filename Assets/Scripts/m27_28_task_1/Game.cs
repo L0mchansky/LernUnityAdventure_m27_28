@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace m28_28_task_1
+namespace m27_28_task_1
 {
     public class Game: MonoBehaviour
     {
@@ -13,22 +13,18 @@ namespace m28_28_task_1
         [SerializeField] private WalletUIInitializer _panelPrefabDiamond;
         [SerializeField] private WalletUIInitializer _panelPrefabEnergy;
 
-        private const string CurrencyNameCoin    = "Coin";
-        private const string CurrencyNameDiamond = "Diamond";
-        private const string CurrencyNameEnergy  = "Energy";
-
         private IWalletService _wallet;
         private int _defaultValue = 0;
 
-        private void Start()
+        private void Awake()
         {
             _wallet = new Wallet();
 
-            CreateCurrency(new Currency(CurrencyNameCoin, _defaultValue, CurrencyType.Coin), _panelPrefabCoin);
-            CreateCurrency(new Currency(CurrencyNameDiamond, _defaultValue, CurrencyType.Diamond), _panelPrefabDiamond);
-            CreateCurrency(new Currency(CurrencyNameEnergy, _defaultValue, CurrencyType.Energy), _panelPrefabEnergy);
+            CreateCurrency(new Currency(CurrencyType.Coin, _defaultValue), _panelPrefabCoin);
+            CreateCurrency(new Currency(CurrencyType.Diamond, _defaultValue), _panelPrefabDiamond);
+            CreateCurrency(new Currency(CurrencyType.Energy, _defaultValue), _panelPrefabEnergy);
 
-            _canvas.gameObject.SetActive(true);
+            if (_canvas != null) _canvas.gameObject.SetActive(true);
         }
 
         private void CreateCurrency(Currency currency, WalletUIInitializer viewPrefab)

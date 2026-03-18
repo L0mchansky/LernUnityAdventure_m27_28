@@ -378,55 +378,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1 &832575517
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 832575519}
-  - component: {fileID: 832575518}
-  m_Layer: 0
-  m_Name: Global Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &832575518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832575517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
---- !u!4 &832575519
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832575517}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214962224
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,11 +569,11 @@ MonoBehaviour:
   _offsetStep: {x: 0, y: 85, z: 0}
   _canvas: {fileID: 2057704999}
   _panel: {fileID: 1322615503}
-  _panelPrefabCoin: {fileID: 8912497346939080355, guid: 22d3dc723c3483743a31c71bd6975b9e,
+  _panelPrefabCoin: {fileID: 8867780894503242480, guid: 22d3dc723c3483743a31c71bd6975b9e,
     type: 3}
-  _panelPrefabDiamond: {fileID: 5728764007352608974, guid: a6f4dde345b8dff42a3b98a392998aec,
+  _panelPrefabDiamond: {fileID: 1869767777437727394, guid: a6f4dde345b8dff42a3b98a392998aec,
     type: 3}
-  _panelPrefabEnergy: {fileID: 7495586669726637472, guid: 53b2765d997571d4895eee7fed308c4e,
+  _panelPrefabEnergy: {fileID: 7206155407431056772, guid: 53b2765d997571d4895eee7fed308c4e,
     type: 3}
 --- !u!1 &2057704999
 GameObject:
@@ -732,7 +683,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 330585546}
   - {fileID: 410087041}
-  - {fileID: 832575519}
   - {fileID: 2057705003}
   - {fileID: 1214962227}
   - {fileID: 1495840922}

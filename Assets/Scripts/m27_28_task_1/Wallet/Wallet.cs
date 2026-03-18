@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace m28_28_task_1
+namespace m27_28_task_1
 {
     public class Wallet: IWalletService
     {
