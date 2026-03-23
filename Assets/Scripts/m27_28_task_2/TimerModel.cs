@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using UnityEngine;
 
 namespace m27_28_task_2
 {
@@ -11,10 +13,14 @@ namespace m27_28_task_2
         private float _remainingTime;
         private float _fullTime;
 
-        public TimerModel(float fullTime)
+        private Coroutine _runCoroutine;
+        private MonoBehaviour _runner;
+
+        public TimerModel(float fullTime, MonoBehaviour runner)
         {
             _fullTime = fullTime;
             _remainingTime = fullTime;
+            _runner = runner;
         }
 
         public bool IsRunning => _isRunning;
@@ -39,18 +45,30 @@ namespace m27_28_task_2
         public void Start()
         {
             _isRunning = true;
+            _runCoroutine = _runner.StartCoroutine(Run());
         }
 
         public void Stop()
         {
             _isRunning = false;
+            _runner.StopCoroutine(_runCoroutine);
         }
 
         public void Restart()
         {
             _isRunning = false;
+            _runner.StopCoroutine(_runCoroutine);
             _remainingTime = _fullTime;
             Reset?.Invoke();
+        }
+
+        public IEnumerator Run()
+        {
+            while (true)
+            {
+                Tick(Time.deltaTime);
+                yield return null;
+            }
         }
     }
 }

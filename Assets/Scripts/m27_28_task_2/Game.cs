@@ -25,19 +25,8 @@ namespace m27_28_task_2
 
         private void Start()
         {
-            CreateTimer(new TimerModel(_fullTimeToTimer), _sliderView, _sliderController);
-            CreateTimer(new TimerModel(_fullTimeToTimer), _hearthView, _hearthController);
-        }
-
-        private void Update()
-        {
-            if (_timerModels.Count > 0)
-            {
-                foreach (var timer in _timerModels)
-                {
-                    timer.Tick(Time.deltaTime);
-                }
-            }
+            CreateTimer(new TimerModel(_fullTimeToTimer, this), _sliderView, _sliderController);
+            CreateTimer(new TimerModel(_fullTimeToTimer, this), _hearthView, _hearthController);
         }
 
         private void CreateTimer(TimerModel model, TimerView view, TimerController controller)

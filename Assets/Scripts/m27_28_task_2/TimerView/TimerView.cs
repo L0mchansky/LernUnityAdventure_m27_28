@@ -23,6 +23,7 @@ namespace m27_28_task_2
         private void OnDestroy()
         {
             _timer.Ticked -= OnTicked;
+            _timer.Reset -= OnReset;
         }
 
         private void OnTicked()
