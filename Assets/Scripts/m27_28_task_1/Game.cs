@@ -4,9 +4,6 @@ namespace m27_28_task_1
 {
     public class Game: MonoBehaviour
     {
-        [SerializeField] private Vector3 _position;
-        [SerializeField] private Vector3 _offsetStep;
-
         [SerializeField] private GameObject _canvas;
         [SerializeField] private GameObject _panel;
         [SerializeField] private WalletUIInitializer _panelPrefabCoin;
@@ -20,16 +17,16 @@ namespace m27_28_task_1
         {
             _wallet = new Wallet();
 
-            CreateCurrency(new Currency(CurrencyType.Coin, _defaultValue), _panelPrefabCoin);
-            CreateCurrency(new Currency(CurrencyType.Diamond, _defaultValue), _panelPrefabDiamond);
-            CreateCurrency(new Currency(CurrencyType.Energy, _defaultValue), _panelPrefabEnergy);
+            CreateCurrency(CurrencyType.Coin, _defaultValue, _panelPrefabCoin);
+            CreateCurrency(CurrencyType.Diamond, _defaultValue, _panelPrefabDiamond);
+            CreateCurrency(CurrencyType.Energy, _defaultValue, _panelPrefabEnergy);
 
             if (_canvas != null) _canvas.gameObject.SetActive(true);
         }
 
-        private void CreateCurrency(Currency currency, WalletUIInitializer viewPrefab)
+        private void CreateCurrency(CurrencyType type, int value, WalletUIInitializer viewPrefab)
         {
-            _wallet.AddCurrency(currency);
+            Currency currency = _wallet.AddCurrency(type, value);
 
             if (viewPrefab != null)
             {
@@ -39,9 +36,6 @@ namespace m27_28_task_1
 
                 rectTransform.anchoredPosition = viewPrefab.GetComponent<RectTransform>().anchoredPosition;
                 rectTransform.sizeDelta = viewPrefab.GetComponent<RectTransform>().sizeDelta;
-
-                rectTransform.anchoredPosition.Set(_position.x, _position.y);
-                _position += _offsetStep;
 
                 walletUIInitializer.Initialize(_wallet, currency);
             }

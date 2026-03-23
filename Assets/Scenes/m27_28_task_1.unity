@@ -457,6 +457,7 @@ GameObject:
   - component: {fileID: 1322615504}
   - component: {fileID: 1322615506}
   - component: {fileID: 1322615505}
+  - component: {fileID: 1322615507}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -521,6 +522,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322615503}
   m_CullTransparentMesh: 1
+--- !u!114 &1322615507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322615503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1495840921
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,8 +592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129f986cc8304eb4ebbc88ed950f14e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _position: {x: 180, y: 130, z: 0}
-  _offsetStep: {x: 0, y: 85, z: 0}
   _canvas: {fileID: 2057704999}
   _panel: {fileID: 1322615503}
   _panelPrefabCoin: {fileID: 8867780894503242480, guid: 22d3dc723c3483743a31c71bd6975b9e,
@@ -593,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2057705000
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,9 +4,10 @@ namespace m27_28_task_1
 {
     public interface IWalletService
     {
-        void Add(CurrencyType type, int value);
-        void Subtract(CurrencyType type, int value);
-        int Get(CurrencyType type);
-        void AddCurrency(Currency currency);
+        void AddValue(CurrencyType type, int value);
+        void Spend(CurrencyType type, int value);
+        bool CanSpend(CurrencyType type, int value);
+        int GetValue(CurrencyType type);
+        Currency AddCurrency(CurrencyType type, int value);
     }
 }

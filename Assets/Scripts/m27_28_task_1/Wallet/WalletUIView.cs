@@ -12,20 +12,17 @@ namespace m27_28_task_1 {
         {
             _currency = currency;
 
-            _currency.ChangeBalance += OnChangeBalance;
+            _currency.BalanceChanged += OnBalanceChanged;
         }
 
         private void OnDestroy()
         {
-            _currency.ChangeBalance -= OnChangeBalance;
+            _currency.BalanceChanged -= OnBalanceChanged;
         }
 
-        private void OnChangeBalance(Currency currency, int value)
+        private void OnBalanceChanged(int value)
         {
-            if (_currency == currency)
-            {
-                currencyUiValue.text = value.ToString();
-            }
+            currencyUiValue.text = value.ToString();
         }
     }
 }

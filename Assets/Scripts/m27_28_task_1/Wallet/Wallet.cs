@@ -5,71 +5,76 @@ namespace m27_28_task_1
 {
     public class Wallet: IWalletService
     {
-        private List<Currency> _currencies = new();
+        private Dictionary<CurrencyType, Currency> _currencies = new();
 
-        public void Add(CurrencyType type, int value)
+        private bool TryGetCurrency(CurrencyType type, out Currency currency)
         {
-            if (value == 0 || value < 0) return;
-            if (CheckCurrency(type) == false) return;
-
-            int currentValue = Get(type);
-            Set(type, currentValue + value);
+            return _currencies.TryGetValue(type, out currency);
         }
 
-        public void Subtract(CurrencyType type, int value)
+        public void AddValue(CurrencyType type, int value)
         {
-            if (value == 0) return;
-            if (CheckCurrency(type) == false) return;
+            if (value <= 0) return;
+            if (TryGetCurrency(type, out Currency currency)) return;
 
-            value = Math.Abs(value);
-            int currentValue = Get(type);
-            Set(type, currentValue - value);
+            SetValue(type, currency.Value + value);
         }
 
-        public int Get(CurrencyType type)
+        public void Spend(CurrencyType type, int value)
         {
-            if (CheckCurrency(type))
+            if (TryGetNewValueAfterSpend(type, value, out int newValue) == false) return;
+
+            SetValue(type, newValue);
+        }
+
+        public bool CanSpend(CurrencyType type, int value)
+        {
+            return TryGetNewValueAfterSpend(type, value, out _);
+        }
+
+        public int GetValue(CurrencyType type)
+        {
+            if (TryGetCurrency(type, out Currency currency))
             {
-                foreach (var currency in _currencies)
-                {
-                    if (currency.Type == type)
-                        return currency.Value;
-                }
+                return currency.Value;
             }
 
             return 0;
         }
 
-        public void AddCurrency(Currency currency)
+        public Currency AddCurrency(CurrencyType type, int value)
         {
-            if (CheckCurrency(currency.Type) == true) return;
+            Currency currency = null;
 
-            _currencies.Add(currency);
-        }
-
-        private bool CheckCurrency(CurrencyType type)
-        {
-            if (_currencies.Count == 0) return false;
-
-            foreach (var currency in _currencies)
+            if (TryGetCurrency(type, out currency))
             {
-                if (currency.Type == type)
-                    return true;
+                return currency;
             }
 
-            return false;
+            currency = new(type, value);
+            _currencies.Add(type, currency);
+
+            return currency;
         }
 
-        private void Set(CurrencyType type, int value)
+        private void SetValue(CurrencyType type, int value)
         {
-            foreach (var currency in _currencies)
+            if (TryGetCurrency(type, out Currency currency))
             {
-                if (currency.Type == type)
-                {
-                    currency.SetValue(value);
-                    return;
-                } 
+                currency.SetValue(value);
             }
+        }
+
+        private bool TryGetNewValueAfterSpend(CurrencyType type, int value, out int newValue)
+        {
+            newValue = 0;
+
+            if (value <= 0) return false;
+            if (TryGetCurrency(type, out Currency currency)) return false;
+
+            newValue = currency.Value - value;
+
+            return newValue >= 0;
         }
     }
 }
