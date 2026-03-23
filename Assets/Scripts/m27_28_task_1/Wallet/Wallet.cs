@@ -15,7 +15,7 @@ namespace m27_28_task_1
         public void AddValue(CurrencyType type, int value)
         {
             if (value <= 0) return;
-            if (TryGetCurrency(type, out Currency currency)) return;
+            if (TryGetCurrency(type, out Currency currency) == false) return;
 
             SetValue(type, currency.Value + value);
         }
@@ -70,7 +70,7 @@ namespace m27_28_task_1
             newValue = 0;
 
             if (value <= 0) return false;
-            if (TryGetCurrency(type, out Currency currency)) return false;
+            if (TryGetCurrency(type, out Currency currency) == false) return false;
 
             newValue = currency.Value - value;
 

@@ -32,10 +32,9 @@ namespace m27_28_task_1
             {
                 WalletUIInitializer walletUIInitializer = Instantiate(viewPrefab, _panel.transform);
 
-                RectTransform rectTransform = walletUIInitializer.GetComponent<RectTransform>();
-
+/*                RectTransform rectTransform = walletUIInitializer.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = viewPrefab.GetComponent<RectTransform>().anchoredPosition;
-                rectTransform.sizeDelta = viewPrefab.GetComponent<RectTransform>().sizeDelta;
+                rectTransform.sizeDelta = viewPrefab.GetComponent<RectTransform>().sizeDelta;*/
 
                 walletUIInitializer.Initialize(_wallet, currency);
             }
