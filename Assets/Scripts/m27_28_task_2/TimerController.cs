@@ -12,6 +12,6 @@ namespace m27_28_task_2
 
         public void StartTimer() => _timer.Start();
         public void StopTimer() => _timer.Stop();
-        public void ResetTimer() => _timer.Reset();
+        public void ResetTimer() => _timer.Restart();
     }
 }

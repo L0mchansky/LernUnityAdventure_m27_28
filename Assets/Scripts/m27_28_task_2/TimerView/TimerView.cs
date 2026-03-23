@@ -16,21 +16,21 @@ namespace m27_28_task_2
         {
             _timer = timer;
 
-            _timer.TimerTick += OnTimerTick;
-            _timer.TimerReset += OnTimerReset;
+            _timer.Ticked += OnTicked;
+            _timer.Reset += OnReset;
         }
 
         private void OnDestroy()
         {
-            _timer.TimerTick -= OnTimerTick;
+            _timer.Ticked -= OnTicked;
         }
 
-        private void OnTimerTick()
+        private void OnTicked()
         {
             ViewRender();
         }
 
-        private void OnTimerReset()
+        private void OnReset()
         {
             ViewReset();
         }

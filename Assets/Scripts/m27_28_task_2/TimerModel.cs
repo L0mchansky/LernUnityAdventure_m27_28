@@ -4,8 +4,8 @@ namespace m27_28_task_2
 {
     public class TimerModel
     {
-        public event Action TimerTick;
-        public event Action TimerReset;
+        public event Action Ticked;
+        public event Action Reset;
 
         private bool _isRunning;
         private float _remainingTime;
@@ -27,13 +27,13 @@ namespace m27_28_task_2
 
             _remainingTime = _remainingTime - deltaTime;
 
-            if (_remainingTime < 0)
+            if (_remainingTime <= 0)
             {
                 _remainingTime = 0;
                 Stop();
             }
 
-            TimerTick?.Invoke();
+            Ticked?.Invoke();
         }
 
         public void Start()
@@ -46,11 +46,11 @@ namespace m27_28_task_2
             _isRunning = false;
         }
 
-        public void Reset()
+        public void Restart()
         {
             _isRunning = false;
             _remainingTime = _fullTime;
-            TimerReset?.Invoke();
+            Reset?.Invoke();
         }
     }
 }
