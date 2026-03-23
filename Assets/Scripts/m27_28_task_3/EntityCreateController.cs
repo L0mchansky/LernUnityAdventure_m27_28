@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace m27_28_task_3
 {
@@ -19,6 +17,7 @@ namespace m27_28_task_3
         private void Update()
         {
             _destructionService.Update();
+            Debug.Log($"Entities зарегистрированно: {_destructionService.GetEntriesCount}");
         }
 
         public void CreateEntityWithIsDeadCondition()

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace m27_28_task_3
 {
     public class EntityDestructionService
     {
         private List<EntityEntry> _entries = new List<EntityEntry>();
+
+        public int GetEntriesCount => _entries.Count;
 
         public EntityEntry RegisterEntity(Entity entity)
         {
@@ -26,10 +26,6 @@ namespace m27_28_task_3
                     _entries.RemoveAt(i);
                 }
             }
-
-            Debug.Log($"Entities зарегистрированно: {_entries.Count}");
         }
-
-        public int GetCount() => _entries.Count;
     }
 }
