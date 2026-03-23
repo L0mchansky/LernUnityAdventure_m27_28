@@ -7,9 +7,9 @@ namespace m27_28_task_1
         [SerializeField] private WalletUIController _controller;
         [SerializeField] private WalletUIView _view;
 
-        private IWalletService _wallet;
+        private Wallet _wallet;
 
-        public void Initialize(IWalletService wallet, Currency currency)
+        public void Initialize(Wallet wallet, Currency currency)
         {
             _wallet = wallet;
 

@@ -10,7 +10,7 @@ namespace m27_28_task_1
         [SerializeField] private WalletUIInitializer _panelPrefabDiamond;
         [SerializeField] private WalletUIInitializer _panelPrefabEnergy;
 
-        private IWalletService _wallet;
+        private Wallet _wallet;
         private int _defaultValue = 0;
 
         private void Awake()
@@ -31,10 +31,6 @@ namespace m27_28_task_1
             if (viewPrefab != null)
             {
                 WalletUIInitializer walletUIInitializer = Instantiate(viewPrefab, _panel.transform);
-
-/*                RectTransform rectTransform = walletUIInitializer.GetComponent<RectTransform>();
-                rectTransform.anchoredPosition = viewPrefab.GetComponent<RectTransform>().anchoredPosition;
-                rectTransform.sizeDelta = viewPrefab.GetComponent<RectTransform>().sizeDelta;*/
 
                 walletUIInitializer.Initialize(_wallet, currency);
             }

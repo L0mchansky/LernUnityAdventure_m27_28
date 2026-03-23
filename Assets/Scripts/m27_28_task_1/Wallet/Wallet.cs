@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace m27_28_task_1
 {
-    public class Wallet: IWalletService
+    public class Wallet
     {
         private Dictionary<CurrencyType, Currency> _currencies = new();
 

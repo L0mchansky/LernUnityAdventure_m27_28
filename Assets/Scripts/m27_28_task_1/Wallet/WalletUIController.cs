@@ -4,8 +4,8 @@ namespace m27_28_task_1
 {
     public class WalletUIController: MonoBehaviour
     {
-        private IWalletService _wallet;
-        public void Initialize(IWalletService wallet)
+        private Wallet _wallet;
+        public void Initialize(Wallet wallet)
         {
             _wallet = wallet;
         }
