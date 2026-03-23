@@ -13,9 +13,10 @@ namespace m27_28_task_3
         [SerializeField] private bool _useMaxCountCondition;
         [SerializeField] private int _maxCount = 3;
 
-        public List<Func<bool>> Build(Entity entity, EntityDestructionService service)
+        public void Build(EntityEntry entityEntry, float entityCount)
         {
             List<Func<bool>> conditions = new List<Func<bool>>();
+            Entity entity = entityEntry.GetEntity;
 
             if (_useIsDeadCondition)
             {
@@ -24,15 +25,16 @@ namespace m27_28_task_3
 
             if (_useLifetimeCondition)
             {
-                conditions.Add(() => Time.time - entity.GetSpawnTime > _lifetime);
+                float spawnTime = Time.time;
+                conditions.Add(() => Time.time - spawnTime > _lifetime);
             }
 
             if (_useMaxCountCondition)
             {
-                conditions.Add(() => service.GetCount() > _maxCount);
+                conditions.Add(() => entityCount > _maxCount);
             }
 
-            return conditions;
+            entityEntry.AddDestroyCondition(conditions);
         }
     }
 }

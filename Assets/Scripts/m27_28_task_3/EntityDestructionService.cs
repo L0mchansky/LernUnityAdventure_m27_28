@@ -8,9 +8,12 @@ namespace m27_28_task_3
     {
         private List<EntityEntry> _entries = new List<EntityEntry>();
 
-        public void RegisterEntity(Entity entity, List<Func<bool>> destroyConditions)
+        public EntityEntry RegisterEntity(Entity entity)
         {
-            _entries.Add(new EntityEntry(entity, destroyConditions));
+            EntityEntry entityEntry = new(entity);
+            _entries.Add(entityEntry);
+
+            return entityEntry;
         }
 
         public void Update()

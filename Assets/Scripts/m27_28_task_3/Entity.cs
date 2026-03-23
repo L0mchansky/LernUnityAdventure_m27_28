@@ -5,12 +5,6 @@ namespace m27_28_task_3
     public class Entity : MonoBehaviour
     {
         [SerializeField] private bool _isDead;
-        private float _spawnTime;
-
-        public void Initialize()
-        {
-            _spawnTime = Time.time;
-        }
 
         public bool IsDead => _isDead;
 
@@ -18,8 +12,6 @@ namespace m27_28_task_3
         {
             _isDead = value;
         }
-
-        public float GetSpawnTime => _spawnTime;
 
         public void Die()
         {

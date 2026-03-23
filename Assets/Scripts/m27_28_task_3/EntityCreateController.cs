@@ -16,37 +16,42 @@ namespace m27_28_task_3
             _destructionService = new EntityDestructionService();
         }
 
-        private List<Func<bool>> CreateConditionsList(params Func<bool>[] conditions)
+        private void Update()
         {
-            return new List<Func<bool>>(conditions);
+            _destructionService.Update();
         }
 
         public void CreateEntityWithIsDeadCondition()
         {
-            Entity entity = CreateEntity();
-            var conditions = CreateConditionsList(() => entity.IsDead);
-            _destructionService.RegisterEntity(entity, conditions);
+            EntityEntry entityEntry = CreateEntityEntry();
+            entityEntry.AddDestroyCondition(() => entityEntry.GetEntity.IsDead);
         }
 
         public void CreateEntityWithLifetimeCondition(float lifetime = 5f)
         {
-            Entity entity = CreateEntity();
-            var conditions = CreateConditionsList(() => Time.time - entity.GetSpawnTime > lifetime);
-            _destructionService.RegisterEntity(entity, conditions);
+            EntityEntry entityEntry = CreateEntityEntry();
+
+            float spawnTime = Time.time;
+
+            entityEntry.AddDestroyCondition(() => Time.time - spawnTime > lifetime);
         }
 
         public void CreateEntityWithMaxCountCondition(int maxEntities = 3)
         {
-            Entity entity = CreateEntity();
-            var conditions = CreateConditionsList(() => _destructionService.GetCount() > maxEntities);
-            _destructionService.RegisterEntity(entity, conditions);
+            EntityEntry entityEntry = CreateEntityEntry();
+
+            float entityCount = _destructionService.GetCount();
+
+            entityEntry.AddDestroyCondition(() => entityCount > maxEntities);
         }
 
         public void CreateEntityWithMultipleConditions()
         {
-            Entity entity = CreateEntity();
-            var conditions = _multipleConditions.Build(entity, _destructionService);
-            _destructionService.RegisterEntity(entity, conditions);
+            EntityEntry entityEntry = CreateEntityEntry();
+
+            float entityCount = _destructionService.GetCount();
+
+            _multipleConditions.Build(entityEntry, entityCount);
         }
 
         private Entity CreateEntity()
@@ -56,14 +61,15 @@ namespace m27_28_task_3
 
             Vector3 position = new Vector3(randomX, 0, randomZ);
             Entity entity = Instantiate(_entityPrefab, position, Quaternion.identity);
-            entity.Initialize();
 
             return entity;
         }
 
-        private void Update()
+        private EntityEntry CreateEntityEntry()
         {
-            _destructionService.Update();
+            Entity entity = CreateEntity();
+            EntityEntry entityEntry = _destructionService.RegisterEntity(entity);
+            return entityEntry;
         }
     }
 }

@@ -8,13 +8,23 @@ namespace m27_28_task_3
         private Entity _entity;
         private List<Func<bool>> _destroyConditions;
 
-        public EntityEntry(Entity entity, List<Func<bool>> destroyConditions)
+        public EntityEntry(Entity entity)
         {
             _entity = entity;
-            _destroyConditions = destroyConditions;
+            _destroyConditions = new List<Func<bool>>();
         }
 
         public Entity GetEntity => _entity;
+
+        public void AddDestroyCondition(List<Func<bool>> conditions)
+        {
+            _destroyConditions.AddRange(conditions);
+        }
+
+        public void AddDestroyCondition(Func<bool> condition)
+        {
+            _destroyConditions.Add(condition);
+        }
 
         public bool ShouldDestroy()
         {
