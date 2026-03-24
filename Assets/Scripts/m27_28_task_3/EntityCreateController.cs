@@ -39,7 +39,7 @@ namespace m27_28_task_3
         {
             EntityEntry entityEntry = CreateEntityEntry();
 
-            float entityCount = _destructionService.GetCount();
+            float entityCount = _destructionService.GetEntriesCount;
 
             entityEntry.AddDestroyCondition(() => entityCount > maxEntities);
         }
@@ -48,7 +48,7 @@ namespace m27_28_task_3
         {
             EntityEntry entityEntry = CreateEntityEntry();
 
-            float entityCount = _destructionService.GetCount();
+            float entityCount = _destructionService.GetEntriesCount;
 
             _multipleConditions.Build(entityEntry, entityCount);
         }
