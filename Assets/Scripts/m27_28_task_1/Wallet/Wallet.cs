@@ -6,11 +6,6 @@ namespace m27_28_task_1
     {
         private Dictionary<CurrencyType, Currency> _currencies = new();
 
-        private bool TryGetCurrency(CurrencyType type, out Currency currency)
-        {
-            return _currencies.TryGetValue(type, out currency);
-        }
-
         public void AddValue(CurrencyType type, int value)
         {
             if (value <= 0) return;
@@ -41,7 +36,7 @@ namespace m27_28_task_1
             return 0;
         }
 
-        public Currency AddCurrency(CurrencyType type, int value)
+        public Currency GetOrCreateCurrency(CurrencyType type, int initialValue = 0)
         {
             Currency currency = null;
 
@@ -50,9 +45,8 @@ namespace m27_28_task_1
                 return currency;
             }
 
-            currency = new(type, value);
-            _currencies.Add(type, currency);
-
+            currency = new(type, initialValue);
+            _currencies.Add(type, currency);    
             return currency;
         }
 
@@ -74,6 +68,11 @@ namespace m27_28_task_1
             newValue = currency.Value - value;
 
             return newValue >= 0;
+        }
+
+        private bool TryGetCurrency(CurrencyType type, out Currency currency)
+        {
+            return _currencies.TryGetValue(type, out currency);
         }
     }
 }

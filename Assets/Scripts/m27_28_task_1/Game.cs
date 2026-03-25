@@ -26,12 +26,11 @@ namespace m27_28_task_1
 
         private void CreateCurrency(CurrencyType type, int value, WalletUIInitializer viewPrefab)
         {
-            Currency currency = _wallet.AddCurrency(type, value);
+            Currency currency = _wallet.GetOrCreateCurrency(type, value);
 
             if (viewPrefab != null)
             {
                 WalletUIInitializer walletUIInitializer = Instantiate(viewPrefab, _panel.transform);
-
                 walletUIInitializer.Initialize(_wallet, currency);
             }
         }
